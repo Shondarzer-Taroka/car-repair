@@ -1,11 +1,11 @@
-import Image from "next/image";
+import HomePage from "@/Components/HomePage/HomePage";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <button className="btn btn-primary">
-        btn
-      </button>
+    <main className="container mx-auto">
+    
+       <HomePage></HomePage>
+
     </main>
   );
 }
