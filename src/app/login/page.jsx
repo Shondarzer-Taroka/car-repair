@@ -3,10 +3,10 @@ import Image from 'next/image';
 import React from 'react';
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import Link from "next/link"
-import { FaFacebook, FaGoogle, FaLinkedin } from 'react-icons/fa';
+import { FaFacebook, FaGithub, FaGoogle, FaLinkedin } from 'react-icons/fa';
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
-const page = () => {
+const LogIn = () => {
        const router=useRouter()
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -56,9 +56,10 @@ const page = () => {
                             <p className='text-center py-4'> or Sign in with </p>
                             <div className=''>
                                 <div className='flex gap-1 justify-center w-full'>
-                                    <FaFacebook></FaFacebook>
-                                    <FaLinkedin></FaLinkedin>
-                                    <FaGoogle></FaGoogle>
+                                    <FaFacebook className='hover:text-green-500 text-2xl'></FaFacebook>
+                                    <FaLinkedin className='hover:text-green-500 text-2xl'></FaLinkedin>
+                                    <FaGoogle className='hover:text-green-500 text-2xl' onClick={()=> signIn('google')}></FaGoogle>
+                                    <FaGithub className='hover:text-green-500 text-2xl'></FaGithub>
                                 </div>
                             </div>
                             <p className='text-center mt-3'>Have any account <span><Link className='font-bold text-red-500' href={'/signup'}>Sign up</Link></span></p>
@@ -70,4 +71,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default LogIn;
