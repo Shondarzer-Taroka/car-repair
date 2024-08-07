@@ -5,14 +5,27 @@ import { Button, Label, TextInput } from "flowbite-react";
 import Link from 'next/link';
 const page = () => {
 
-    const handleSubmit=(e)=>{
+    const handleSubmit=async(e)=>{
         e.preventDefault()
-        const user={
+        const newUser={
             name:e.target.name.value,
             email:e.target.email.value,
             password:e.target.password.value
         }
-        console.log(user);
+
+       let res=await fetch('http://localhost:3000/signup/api',{
+            method:'POST',
+            body:JSON.stringify(newUser),
+            headers:{
+                'content-type':'application/json'
+            }
+        })
+        console.log(res);
+        // if (res) {
+        //     e.target.reset()
+        // }
+        
+        // console.log(newUser);
         
     }
     return (

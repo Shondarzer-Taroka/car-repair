@@ -1,32 +1,14 @@
+'use client'
+import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { FaShoppingCart } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 const NavBar = () => {
-
-    const links = [
-        {
-            path: '/',
-            title: 'Home'
-        },
-        {
-            path: '/about',
-            title: 'About'
-        },
-        {
-            path: '/services',
-            title: 'Services'
-        },
-        {
-            path: '/blog',
-            title: 'Blog'
-        },
-        {
-            path: '/contact',
-            title: 'Contact'
-        }
-    ]
+   const session=useSession()
+   console.log(session);
+   
     return (
         <div className=' bg-base-100 '>
             <div className="navbar container mx-auto">
@@ -71,11 +53,48 @@ const NavBar = () => {
                     <IoSearch className='text-2xl' />
                     <a className="btn btn-outline hover:bg-red-500">Appointment</a>
                     </div>
-                    
+
+
+                    <div className='flex gap-2 ml-2'>
+                    {
+                        !session.data?.user? <div>
+                        <button className='btn btn-info text-white'><Link href={'/signup'}>Sign up</Link></button>
+                       <button className='btn btn-success text-white'><Link href={'/login'}>Log in</Link></button>
+                        </div>
+
+                        : <button onClick={()=> signOut()} className='btn outline'>log out</button>
+                    }
+                      
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
+
+
+
+const links = [
+    {
+        path: '/',
+        title: 'Home'
+    },
+    {
+        path: '/about',
+        title: 'About'
+    },
+    {
+        path: '/services',
+        title: 'Services'
+    },
+    {
+        path: '/blog',
+        title: 'Blog'
+    },
+    {
+        path: '/contact',
+        title: 'Contact'
+    }
+]
 
 export default NavBar;
