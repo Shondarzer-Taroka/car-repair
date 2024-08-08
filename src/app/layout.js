@@ -3,11 +3,14 @@ import "./globals.css";
 import NavBar from "@/Components/Shared/NavBar/NavBar";
 import Footer from "@/Components/Shared/Footer/Footer";
 import AuthProvider from "@/services/AuthProvider";
-
+import 'react-toastify/dist/ReactToastify.css';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Car doctor pro",
+  title:{
+    default:'car-doctor',
+    template:'%s | Car doctor'
+  },
   description: "Car repair app",
 };
 

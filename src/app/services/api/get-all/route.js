@@ -6,7 +6,6 @@ export const GET = async () => {
 
  try {
     const services= await servicesCollection.find().toArray();
-
     return Response.json({services})
  } catch (error) {
     console.log(error);

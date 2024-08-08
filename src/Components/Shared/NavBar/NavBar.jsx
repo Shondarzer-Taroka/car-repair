@@ -88,6 +88,10 @@ const links = [
         title: 'Services'
     },
     {
+        path: '/my-bookings',
+        title: 'My bookings'
+    },
+    {
         path: '/blog',
         title: 'Blog'
     },

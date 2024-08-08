@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image'
+import Link from 'next/link';
 const ServiceCard = ({ service }) => {
     console.log(service);
 
@@ -14,14 +15,15 @@ const ServiceCard = ({ service }) => {
                         // Importing an image will
                         // automatically set the width and height
                         src={service.img}
-                       
+
                     />
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title">{service.title}</h2>
                     <p>${service.price}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
+                    <Link href={`/services/${service._id}`}><button className="btn btn-primary">View Details</button></Link>
+                    
                     </div>
                 </div>
             </div>

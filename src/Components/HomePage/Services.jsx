@@ -1,11 +1,8 @@
 import React from 'react';
 import ServiceCard from '../Cards/ServiceCard';
+import { getServices } from '@/services/getService';
 
-  const getServices=async()=>{
-    const resp=await fetch('http://localhost:3000/services/api/get-all')
-    const data=await resp.json()
-    return data
-  }
+
 
 const Services =async () => {
     // console.log(services);
