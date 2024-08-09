@@ -18,7 +18,7 @@ const Page = () => {
 
   const handleDelete = async (id) => {
     const deleted = await fetch(
-      `http://localhost:3000/api/booking/${id}`, {
+      `http://localhost:3000/my-bookings/api/booking/${id}`, {
         method : "DELETE",
       }
     );
@@ -66,9 +66,9 @@ const Page = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              {bookings?.map(({ serviceTitle, _id, date, price }) => (
+              {bookings?.map(({ serviceTitle, _id, date, price },index) => (
                 <tr key={_id}>
-                  <th>1</th>
+                  <th>{index+1}</th>
                   <td>{serviceTitle}</td>
                   <td>{price}</td>
                   <td>{date}</td>

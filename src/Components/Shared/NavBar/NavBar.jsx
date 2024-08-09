@@ -7,7 +7,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 const NavBar = () => {
    const session=useSession()
-   console.log(session);
+//    console.log(session);
    
     return (
         <div className=' bg-base-100 '>

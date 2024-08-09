@@ -5,21 +5,26 @@ import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import Link from "next/link"
 import { FaFacebook, FaGithub, FaGoogle, FaLinkedin } from 'react-icons/fa';
 import { signIn } from 'next-auth/react'
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 const LogIn = () => {
-       const router=useRouter()
-    const handleSubmit = async(e) => {
+
+    const seacrparams = useSearchParams()
+    const path = seacrparams.get('redirect')
+
+    const router = useRouter()
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         const email = e.target.email.value
         const password = e.target.password.value
-        const resp =await signIn('credentials', {
+        const resp = await signIn('credentials', {
             email,
             password,
-            redirect: false
+            redirect: true,
+            callbackUrl: path ? path : '/'
         })
         console.log(resp);
-        if (resp.status===200) {
+        if (resp.status === 200) {
             router.push('/')
         }
     }
@@ -58,7 +63,10 @@ const LogIn = () => {
                                 <div className='flex gap-1 justify-center w-full'>
                                     <FaFacebook className='hover:text-green-500 text-2xl'></FaFacebook>
                                     <FaLinkedin className='hover:text-green-500 text-2xl'></FaLinkedin>
-                                    <FaGoogle className='hover:text-green-500 text-2xl' onClick={()=> signIn('google')}></FaGoogle>
+                                    <FaGoogle className='hover:text-green-500 text-2xl' onClick={() => signIn('google', {
+                                        redirect: true,
+                                        callbackUrl: path ? path : '/'
+                                    })}></FaGoogle>
                                     <FaGithub className='hover:text-green-500 text-2xl'></FaGithub>
                                 </div>
                             </div>
