@@ -1,10 +1,10 @@
+export const dynamic = 'force-dynamic'
 import HomePage from "@/Components/HomePage/HomePage";
-
 export default function Home() {
   return (
     <main className="container mx-auto">
-    
-       <HomePage></HomePage>
+
+      <HomePage></HomePage>
 
     </main>
   );
